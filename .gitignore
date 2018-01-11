@@ -1,0 +1,8 @@
+/.metadata/
+/.recommenders/
+*.class
+.classpath
+.gitignore
+.project
+.settings/
+
