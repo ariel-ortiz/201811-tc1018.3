@@ -35,4 +35,23 @@ class TecArrayListTest {
         assertEquals(6, ai.size());
         assertEquals(0, af.size());
     }
+    
+    @Test
+    void testIsEmpty() {
+        assertFalse(as.isEmpty());
+        assertFalse(ai.isEmpty());
+        assertTrue(af.isEmpty());
+    }
+    
+    @Test
+    void testSet() {
+        assertEquals("verde", as.set(0, "blanco"));
+        assertEquals("blanco", as.set(0, "negro"));
+        assertEquals("negro", as.get(0));
+        assertEquals(42, (int) ai.set(5, -10));
+        assertEquals(-10, (int) ai.get(5));
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            af.set(5, 3.14f);
+        });
+    }
 }
