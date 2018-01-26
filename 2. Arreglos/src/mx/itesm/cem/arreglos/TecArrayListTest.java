@@ -73,4 +73,20 @@ class TecArrayListTest {
         assertIterableEquals(List.of(1, 4, 8, 15, 16, 23, 42, 
                 108, 109, 110, 111), ai);
     }
+    
+    @Test
+    void testRemove() {
+    	assertEquals("verde", as.remove(0));
+    	assertEquals(3, as.size());
+    	assertEquals("azul", as.remove(2));
+    	assertEquals(2, as.size());
+    	assertIterableEquals(List.of("rojo", "amarillo"), as);
+    	for (int x: List.of(4, 8, 15, 16, 23, 42)) {
+    		assertEquals(x, (int) ai.remove(0));
+    	}
+    	assertEquals(0, ai.size());
+    	assertThrows(IndexOutOfBoundsException.class, () -> {
+            af.remove(0);
+        });
+    }
 }

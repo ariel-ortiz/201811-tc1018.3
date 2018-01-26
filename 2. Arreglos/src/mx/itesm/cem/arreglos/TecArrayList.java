@@ -63,4 +63,18 @@ public class TecArrayList<E> extends AbstractList<E> {
         size++;
         //System.out.printf("Size = %d, Capacity = %d%n", size, capacity);
     }
+
+    @Override
+    public E remove(int index) {
+    	if (index < 0 || index >= size) {
+    		throw new IndexOutOfBoundsException();
+    	}
+    	E anterior = data[index];
+    	for (int i = index; i < size - 1; i++) {
+    		data[i] = data[i + 1];
+    	}
+    	size--;
+    	data[size] = null;
+    	return anterior;
+    }
 }
