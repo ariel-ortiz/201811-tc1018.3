@@ -15,21 +15,17 @@ public class TecLista<E> {
     }
     
     private Node<E> start = new Node<>(null);
+    private int size = 0;
     
     public void add(E info) {
         Node<E> nuevo = new Node<>(info, start.next);
         start.next = nuevo;
+        size++;
     }
     
-    // Complejidad O(N)
+    // Complejidad O(1)
     public int size() {
-        int contador = 0;
-        Node<E> p = start.next;
-        while (p != null) {
-            contador++;
-            p = p.next;
-        }
-        return contador;
+        return size;
     }
     
     @Override
