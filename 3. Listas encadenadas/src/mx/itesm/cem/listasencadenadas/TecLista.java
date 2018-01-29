@@ -21,14 +21,29 @@ public class TecLista<E> {
         start.next = nuevo;
     }
     
+    // Complejidad O(N)
+    public int size() {
+        int contador = 0;
+        Node<E> p = start.next;
+        while (p != null) {
+            contador++;
+            p = p.next;
+        }
+        return contador;
+    }
+    
     @Override
     public String toString() {
-        String resultado = "";
+        StringBuilder resultado = new StringBuilder("["); 
         Node<E> nodo = start.next;
         while (nodo != null) {
-            resultado += nodo.info + " ";
+            resultado.append(nodo.info);
+            if (nodo.next != null) {
+                resultado.append(", ");
+            }
             nodo = nodo.next;
         }
-        return "[" + resultado + "]";
+        resultado.append("]");
+        return resultado.toString();
     }
 }
