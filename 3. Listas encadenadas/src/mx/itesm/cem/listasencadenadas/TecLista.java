@@ -2,7 +2,7 @@ package mx.itesm.cem.listasencadenadas;
 
 public class TecLista<E> {
     
-    private static class Node<E> {
+    protected static class Node<E> {
         public E info;
         public Node<E> next;
         public Node(E info, Node<E> next) {
@@ -14,8 +14,8 @@ public class TecLista<E> {
         }
     }
     
-    private Node<E> start = new Node<>(null);
-    private int size = 0;
+    protected Node<E> start = new Node<>(null);
+    protected int size = 0;
     
     public void add(E info) {
         Node<E> nuevo = new Node<>(info, start.next);
@@ -41,5 +41,25 @@ public class TecLista<E> {
         }
         resultado.append("]");
         return resultado.toString();
+    }
+    
+    public E remove() {
+        if (size == 0) {
+            return null;
+        }
+        E resultado = start.next.info;
+        start.next = start.next.next;
+        size--;
+        return resultado;
+    }
+    
+    public void dup() {
+        Node<E> p = start.next;
+        while (p != null) {
+            Node<E> q = new Node<>(p.info, p.next);
+            size++;
+            p.next = q;
+            p = p.next.next;
+        }
     }
 }
