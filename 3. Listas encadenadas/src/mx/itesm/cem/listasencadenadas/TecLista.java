@@ -62,4 +62,24 @@ public class TecLista<E> {
             p = p.next.next;
         }
     }
+    
+    public boolean removeAll(E element) {
+        Node<E> p = start;
+        boolean resultado = false;
+        while (p.next != null) {
+            if (element.equals(p.next.info)) {
+                resultado = true;
+                size--;
+                p.next = p.next.next;
+            } else {
+                p = p.next;
+            }
+        }
+        return resultado;
+    }
+    
+    public void clear() {
+        size = 0;
+        start.next = null;
+    }
 }

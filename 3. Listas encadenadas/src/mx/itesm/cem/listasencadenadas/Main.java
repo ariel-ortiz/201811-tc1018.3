@@ -28,5 +28,21 @@ public class Main {
         lst2.add(42);
         System.out.println(lst2);
         System.out.println(lst2.sum());
+        
+        TecLista<String> lst3 = new TecLista<>();
+        lst3.add("z");
+        lst3.add("x");
+        lst3.add("x");
+        lst3.add("y");
+        lst3.add("x");
+        System.out.println(lst3);
+        System.out.println(lst3.removeAll("x"));
+        System.out.println(lst3);
+        System.out.println(lst3.removeAll("x"));
+        System.out.println(lst3);
+        System.out.println(lst3.size());
+        lst3.clear();
+        System.out.println(lst3);
+        System.out.println(lst3.size());
     }
 }
