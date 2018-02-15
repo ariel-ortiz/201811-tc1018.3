@@ -134,16 +134,17 @@ public class IntList {
         if (end < start) {
             throw new IllegalArgumentException();
         }
-        Node inicio = sentinel;
-        while (inicio.next != null && inicio.next.data < start) {
-            inicio = inicio.next;
+        Node p = sentinel;
+        boolean borrado = false;
+        while (p.next != null) {
+            if (start <= p.next.data &&
+                    p.next.data <= end) {
+                p.next = p.next.next;
+                borrado = true;
+            } else {
+                p = p.next;
+            }
         }
-        Node fin = inicio.next;
-        while (fin != null && fin.data <= end) {
-            fin = fin.next;
-        }
-        Node inicioNextAnterior = inicio.next;
-        inicio.next = fin;
-        return inicioNextAnterior != fin;
+        return borrado;
     }
 }
