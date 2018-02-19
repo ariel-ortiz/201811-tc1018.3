@@ -35,7 +35,7 @@ public class StackSelectionSort {
             }
         }
 
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < n; i++) {
             list.set(i, stack1.pop());
         }
 
@@ -50,6 +50,12 @@ public class StackSelectionSort {
         System.out.println(a);
         selectionSort(a);
         System.out.println(a);
+        List<Estudiante> e = new ArrayList<>();
+        e.add(new Estudiante("A011111111", "Juan"));
+        e.add(new Estudiante("A091111111", "Pedro"));
+        e.add(new Estudiante("A041111111", "Maria"));
+        System.out.println(e);
+        selectionSort(e);
+        System.out.println(e);
     }
-
 }
