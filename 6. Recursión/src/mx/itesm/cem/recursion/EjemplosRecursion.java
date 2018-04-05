@@ -2,6 +2,7 @@ package mx.itesm.cem.recursion;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EjemplosRecursion {
@@ -51,20 +52,49 @@ public class EjemplosRecursion {
         }
     }
 
+    public static <T> List<T> reverse(List<T> lst) {
+        if (lst.isEmpty()) {
+            return new LinkedList<T>();
+        } else {
+            T primero = lst.get(0);
+            List<T> resto = lst.subList(1, lst.size());
+            List<T> reversoResto = reverse(resto);
+            reversoResto.add(primero);
+            return reversoResto;
+        }
+    }
+    
+    public static <T> List<T> duplicate(List<T> lst) {
+        if (lst.isEmpty()) {
+            return new LinkedList<T>();
+        } else {
+            T primero = lst.get(0);
+            List<T> resto = lst.subList(1, lst.size());
+            List<T> duplicaResto = duplicate(resto);
+            duplicaResto.add(0, primero);
+            duplicaResto.add(0, primero);
+            return duplicaResto;
+        }
+    }
+
     public static void main(String[] args) {
-        System.out.println(factorial(0));
-        System.out.println(factorial(4));
-        System.out.println(factorial(5));
-
-        System.out.println();
-
-        List<Integer> lst = Arrays.asList(3, 5, 7, 1, 8, 0,
-                2, 6, 5);
-        System.out.println(lst);
-        System.out.println(quickSort(lst));
-        
-        System.out.println();
-        
-        hanoi(3, "A", "B", "C");
+        /*
+         * System.out.println(factorial(0)); System.out.println(factorial(4));
+         * System.out.println(factorial(5));
+         * 
+         * System.out.println();
+         * 
+         * List<Integer> lst = Arrays.asList(3, 5, 7, 1, 8, 0, 2, 6, 5);
+         * System.out.println(lst); System.out.println(quickSort(lst));
+         * 
+         * System.out.println();
+         * 
+         * hanoi(3, "A", "B", "C");
+         */
+        List<String> s = Arrays.asList("a", "b", "c", "d",
+                "e");
+        System.out.println(s);
+        System.out.println(reverse(s));
+        System.out.println(duplicate(s));
     }
 }
