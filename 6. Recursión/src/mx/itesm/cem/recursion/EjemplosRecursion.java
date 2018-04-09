@@ -76,25 +76,36 @@ public class EjemplosRecursion {
             return duplicaResto;
         }
     }
+    
+    public static int dotProduct(List<Integer> a, List<Integer> b) {
+    	if (a.isEmpty()) {
+    		return 0;
+    	} else {
+    		return a.get(0) * b.get(0) + dotProduct(a.subList(1, a.size()), b.subList(1, b.size()));
+    	}    	
+    }
 
     public static void main(String[] args) {
-        /*
-         * System.out.println(factorial(0)); System.out.println(factorial(4));
-         * System.out.println(factorial(5));
-         * 
-         * System.out.println();
-         * 
-         * List<Integer> lst = Arrays.asList(3, 5, 7, 1, 8, 0, 2, 6, 5);
-         * System.out.println(lst); System.out.println(quickSort(lst));
-         * 
-         * System.out.println();
-         * 
-         * hanoi(3, "A", "B", "C");
-         */
-        List<String> s = Arrays.asList("a", "b", "c", "d",
-                "e");
-        System.out.println(s);
-        System.out.println(reverse(s));
-        System.out.println(duplicate(s));
+//        
+//        System.out.println(factorial(0)); System.out.println(factorial(4));
+//        System.out.println(factorial(5));
+//        
+//        System.out.println();
+//         
+//        List<Integer> lst = Arrays.asList(3, 5, 7, 1, 8, 0, 2, 6, 5);
+//        System.out.println(lst); System.out.println(quickSort(lst));
+//         
+//        System.out.println();
+//         
+//        hanoi(3, "A", "B", "C");
+//        
+    	
+//        List<String> s = Arrays.asList("a", "b", "c", "d",
+//                "e");
+//        System.out.println(s);
+//        System.out.println(reverse(s));
+//        System.out.println(duplicate(s));
+//    	hanoi(64, "A", "B", "C");
+    	System.out.println(dotProduct(Arrays.asList(1, 3, 8, 2), Arrays.asList(3, 0, -1, 10)));
     }
 }
