@@ -31,8 +31,7 @@ public class BinarySearchTreeSet<E extends Comparable<E>>
 
     @Override
     public Iterator<E> iterator() {
-        // TODO Auto-generated method stub
-        return null;
+        return inOrderList().iterator();
     }
 
     public List<E> preOrderList() {
@@ -137,40 +136,31 @@ public class BinarySearchTreeSet<E extends Comparable<E>>
         }
     }
 
-    private boolean isLeaf(Node<E> p) {
-        return p != null && p.izq == null && p.der == null;
+    private E max(Node<E> p) {
+        while (p.der != null) {
+            p = p.der;
+        }
+        return p.data;
     }
 
-    private E max(Node<E> p) {
-        if (isLeaf(p)) {
-            return p.data;
+    public E max2() {
+        E result = null;
+        for (E e : this) {
+            result = e;
+        }
+        return result;
+    }
+
+    public int height() {
+        return height(root);
+    }
+
+    private int height(Node<E> p) {
+        if (p == null) {
+            return -1;
         } else {
-            E maxIzq = null, maxDer = null;
-            E maxChild = null;
-            if (p.izq != null) {
-                maxIzq = max(p.izq);
-            }
-            if (p.der != null) {
-                maxDer = max(p.der);
-            }
-            if (maxIzq != null & maxDer != null) {
-                if (maxIzq.compareTo(maxDer) >= 0) {
-                    maxChild = maxIzq;
-                } else {
-                    maxChild = maxDer;
-                }
-            } else {
-                if (maxIzq != null) {
-                    maxChild = maxIzq;
-                } else {
-                    maxChild = maxDer;
-                }
-            }
-            if (p.data.compareTo(maxChild) >= 0) {
-                return p.data;
-            } else {
-                return maxChild;
-            }
+            return Math.max(height(p.izq), height(p.der))
+                    + 1;
         }
     }
 
@@ -183,5 +173,16 @@ public class BinarySearchTreeSet<E extends Comparable<E>>
         System.out.println(tree.postOrderList());
         System.out.println(tree.levelOrderList());
         System.out.println(tree.max());
+        for (int i : tree) {
+            System.out.println(i);
+        }
+        System.out.println();
+        System.out.println(tree.max2());
+        System.out.println();
+
+        BinarySearchTreeSet<Integer> tree2 = new BinarySearchTreeSet<>();
+        tree2.addAll(Arrays.asList(22, 30, 25, 35, 10, 5,
+                33, 15, 12, 40, 17, 19, 20, 18, 16));
+        System.out.println(tree2.height());
     }
 }
